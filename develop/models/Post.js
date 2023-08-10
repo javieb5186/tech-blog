@@ -16,10 +16,14 @@ Post.init(
       allowNull: false,
     },
     content: {
+      type: DataTypes.STRING(500),
+      allowNull: false,
+    },
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    creator: {
+    author: {
       type: DataTypes.STRING,
       allowNull: false,
 

@@ -3,7 +3,7 @@ const express = require('express');
 // const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./develop/controllers');
-// const helpers = require('./utils/helpers');
+const helpers = require('./develop/utils/helpers');
 
 const sequelize = require('./develop/config/connection');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -11,7 +11,7 @@ const sequelize = require('./develop/config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 
 // const sess = {
 //   secret: 'Super secret secret',
@@ -35,6 +35,6 @@ app.use(express.static(path.join(__dirname, '/develop/public')));
 
 app.use(routes);
 
-sequelize.sync().then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
