@@ -1,15 +1,18 @@
 <div class="container-fluid">
+  {{#each posts as |post|}}
   <div class="large-card">
+    <div class="row">
+      <div class="col blog-title">
+        <h3>{{post.title}}</h1>
+      </div>
+    </div>
     <div class="row">
       <div class="col-2"></div>
       <div class="col-8">
-        <div class="d-flex justify-content-around">
-          <img src="https://i0.wp.com/sunrisedaycamp.org/wp-content/uploads/2020/10/placeholder.png?ssl=1" class="mx-auto" alt="Place holder">
-        </div>
         <div class="row">
           <div class="col-5 blog-date">
             <p>
-              AUGUST 7, 2023
+              {{format_date post.createdAt}}
             </p>
           </div>
           <div class="col-2 blog-divider">
@@ -19,7 +22,7 @@
           </div>
           <div class="col-5 blog-author">
             <p>
-              Jay Bay
+              {{post.author}}
             </p>
           </div>  
         </div>
@@ -27,24 +30,16 @@
       <div class="col-2"></div>
     </div>
     <div class="row">
-      <div class="col blog-title">
-        <h3>Blog Title</h1>
-      </div>
-    </div>
-    <div class="row">
       <div class="col"></div>
       <div class="col-8 blog-text">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-          ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-          fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-          mollit anim id est laborum.
+          {{post.content}}
         </p>
       </div>
       <div class="col"></div>
     </div>
   </div>
+  {{/each}}
 </div>
 
 <div class="container-fluid">
