@@ -82,6 +82,14 @@ img {
   display: none;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 @media screen and (max-width: 710px) {
   .desktop > * {
     display: none;
