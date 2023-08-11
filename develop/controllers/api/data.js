@@ -14,13 +14,19 @@ router.get('/', async (req, res) => {
 
 router.post('/post', async (req, res) => {
   try {
-    const post = await Post.create({
-      title: req.body.title,
-      content: req.body.content,
-      category: req.body.category,
-      author: req.body.user,
-    });
-    res.status(200).json(post);
+    if (req.session.loggedIn) {
+      await Post.create({
+        title: req.body.title,
+        content: req.body.content,
+        category: req.body.category,
+        author: req.session.username,
+        user_id: req.session.user_id,
+      });
+      res.redirect('/dashboard');
+    } else {
+      res.redirect('/');
+    }
+    
   } catch (err) {
     res.status(500).json(err);
   }

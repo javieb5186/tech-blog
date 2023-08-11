@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const Post = require('../models/Post');
-const User = require('../models/User');
-const auth = require('../utils/auth');
+const { Post, User } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -27,6 +25,7 @@ router.post('/login', async (req, res) => {
   
         if (validUserPassword) {
           req.session.save(() => {
+            req.session.user_id = user.id;
             req.session.loggedIn = true;
             req.session.username = user.username;
             res.redirect('/');
@@ -66,6 +65,7 @@ router.post('/signup', async (req, res) => {
         password: req.body.password,
       });
       req.session.save(() => {
+        req.session.user_id = newUser.id;
         req.session.loggedIn = true;
         req.session.username = newUser.username;
         res.redirect('/');
@@ -80,9 +80,31 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+router.get('/dashboard', async (req, res) => {
+  try {
+    if (req.session.loggedIn) {
+      const userData = await User.findByPk( req.session.user_id, {
+        include: [{ model: Post }],
+        attributes: ['username'],
+      });
+      const user = userData.get({ plain: true });
+      console.log(user);
+      res.render('dashboard', { user, loggedIn: req.session.loggedIn });
+    } else if (!req.session.loggedIn) {
+      res.redirect('/'); 
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/newpost', async (req, res) => {
   try {
-    res.render('newPost');
+    if (req.session.loggedIn) {
+      res.render('newPost', {loggedIn: req.session.loggedIn});
+    } else if (!req.session.loggedIn) {
+      res.redirect('/'); 
+    }
   } catch (err) {
     res.status(500).json({ message: err });
   }

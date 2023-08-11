@@ -1,4 +1,5 @@
-const logoutBtn = document.querySelector('#logout-btn');
+const logoutLink = document.querySelector('#logout-link');
+const dashboardLink = document.querySelector('#dashboard-link');
 
 function logout(event) {
   event.preventDefault();
@@ -12,4 +13,18 @@ function logout(event) {
   })
 }
 
-logoutBtn.addEventListener('click', logout);
+function toDashboard(event) {
+  event.preventDefault();
+
+  fetch('/dashboard')
+  .then(res => {
+    if (res.ok) {
+      const origin = document.location.origin;
+      document.location.href = `${origin}/dashboard`;
+    }
+  })
+  .catch(err => console.log(err));
+}
+
+logoutLink.addEventListener('click', logout);
+dashboardLink.addEventListener('click', toDashboard);

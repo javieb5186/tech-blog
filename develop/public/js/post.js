@@ -3,8 +3,6 @@ const formContent = document.querySelector('#content');
 const submit = document.querySelector('#submit');
 const categories = document.querySelector('#categories');
 
-const user = 'jaybay';
-
 function submitPost(event) {
   event.preventDefault();
 
@@ -15,10 +13,12 @@ function submitPost(event) {
   fetch('/api/data/post', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title, content, category, user }),
+    body: JSON.stringify({ title, content, category }),
   })
-  .then(res => res.json())
-  .then(r => console.log(r));
+  .then(() => {
+    const origin = document.location.origin;
+    document.location.href = `${origin}/dashboard`;
+  });
 }
 
 submit.addEventListener('click', submitPost);
