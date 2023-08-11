@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button id="new-post-btn" type="button" class="btn btn-primary">New Post</button>
+    </div>
+  </div>
+  <div class="row">
+    <h1>
+      My Posts
+    </h1>
+    <div class="col">
+      {{#each user.posts as |post|}}
+      <div class="large-card">
+      <div class="row">
+        <div class="col blog-title">
+          <h3>{{post.title}}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-5 blog-date">
+              <p>
+                {{format_date post.createdAt}}
+              </p>
+            </div>
+            <div class="col-2 blog-divider">
+              <p>
+                |
+              </p>
+            </div>
+            <div class="col-5 blog-author">
+              <p>
+                {{post.author}}
+              </p>
+            </div>  
+          </div>
+        </div>
+        <div class="col-2"></div>
+      </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-8 blog-text">
+          <p>
+            {{post.content}}
+          </p>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
