@@ -39,15 +39,15 @@ app.use(express.static(path.join(__dirname, '/develop/public')));
 
 app.use(routes);
 
-// (async function run() {
-//   await User.sync({ force: false });
-//   await Post.sync({ force: false });
-//   await Comment.sync({ force: false });
-//   app.listen(PORT, () => console.log('Now listening'));
-// })();
-
-sequelize.sync({ force: false }).then(() => {
+(async function run() {
+  await User.sync({ force: false });
+  await Post.sync({ force: false });
+  await Comment.sync({ force: false });
   app.listen(PORT, () => console.log('Now listening'));
-});
+})();
+
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log('Now listening'));
+// });
 
 

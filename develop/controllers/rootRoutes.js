@@ -126,4 +126,16 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+router.get('/updatepost/:id', async (req, res) => {
+  try {
+    if (req.session.loggedIn) {
+      res.render('updatePost', {postId: req.params.id, loggedIn: req.session.loggedIn});
+    } else if (!req.session.loggedIn) {
+      res.redirect('/'); 
+    }
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+});
+
 module.exports = router;

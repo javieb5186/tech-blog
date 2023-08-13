@@ -50,7 +50,8 @@ svg.bi {
 }
 
 .blog-title {
-  text-align: center;
+  text-align: left;
+  font-size: 3rem;
 }
 
 .blog-sentence {

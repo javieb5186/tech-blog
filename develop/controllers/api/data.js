@@ -45,4 +45,38 @@ router.post('/comment', async (req, res) => {
   }
 });
 
+router.post('/update/:id', async (req, res) => {
+  try {
+    console.log("Update Called");
+    const post = await Post.update({
+      title: req.body.title,
+      content: req.body.content,
+      category: req.body.category,
+    }, 
+    {
+      where: {
+        id: req.params.id,
+      },
+    });
+    console.log("Post is: ");
+    console.log(post);
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    await Post.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
