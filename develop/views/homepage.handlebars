@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container">
   {{#each posts as |post|}}
-  <div class="large-card">
+  <div id="{{post.id}}" class="large-card mt-4 p-3 bg-primary text-white rounded">
     <div class="row">
       <div class="col blog-title">
         <h3>{{post.title}}</h1>
@@ -141,3 +141,5 @@
     </div>
   </div>
 </div>
+
+<script src="/js/homepage.js"></script>

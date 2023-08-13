@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -107,6 +107,22 @@ router.get('/newpost', async (req, res) => {
     }
   } catch (err) {
     res.status(500).json({ message: err });
+  }
+});
+
+router.get('/post/:id', async (req, res) => {
+  try {
+    if (req.session.loggedIn) {
+      const postData = await Post.findByPk( req.params.id, {
+        include: [{ model: Comment }],
+      });
+      const post = postData.get({ plain: true });
+      res.render('post', { post, loggedIn: req.session.loggedIn });
+    } else if (!req.session.loggedIn) {
+      res.redirect('/');
+    }
+  } catch (err) {
+    
   }
 });
 

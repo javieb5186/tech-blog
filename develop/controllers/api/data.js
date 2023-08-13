@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Post = require('../../models/Post');
+const { Post, Comment } = require('../../models');
 require('dotenv').config();
 
 router.get('/', async (req, res) => {
@@ -27,6 +27,19 @@ router.post('/post', async (req, res) => {
       res.redirect('/');
     }
     
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post('/comment', async (req, res) => {
+  try {
+    await Comment.create({
+      content: req.body.content,
+      author: req.session.username,
+      post_id: req.body.postId,
+    });
+    res.status(200).json({ message: 'Everything okay' });
   } catch (err) {
     res.status(500).json(err);
   }

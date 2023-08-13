@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="{{post.id}}" class="large-card">
+        <div class="row">
+          <div class="col blog-title">
+            <h3>{{post.title}}</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col-5 blog-date">
+                <p>
+                  {{format_date post.createdAt}}
+                </p>
+              </div>
+              <div class="col-2 blog-divider">
+                <p>
+                  |
+                </p>
+              </div>
+              <div class="col-5 blog-author">
+                <p>
+                  {{post.author}}
+                </p>
+              </div>  
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col-8 blog-text">
+            <p>
+              {{post.content}}
+            </p>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div class="mb-3">
+        <label for="comment">Comments:</label>
+        <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+      </div>
+      <div>
+        <button id="comment-btn" type="button" class="btn btn-primary">Add Comment</button>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>
+        Comments
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{#each post.comments as |comment|}}
+      <div class="comment-card">
+        <h4>
+          {{comment.author}} commented
+        </h4>
+        <p>
+          {{format_date comment.createdAt}}
+        </p>
+      </div>
+      <p>
+        {{comment.content}}
+      </p>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+<script src="/js/comment.js"></script>
