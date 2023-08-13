@@ -51,11 +51,16 @@ svg.bi {
 
 .blog-title {
   text-align: left;
-  font-size: 3rem;
+  overflow: hidden;
+}
+
+.post-title {
+  font-size: 1.5rem;
 }
 
 .blog-sentence {
   text-align: center;
+  overflow: hidden;
 }
 
 img {
@@ -68,6 +73,14 @@ img {
 
 .center {
   text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
 }
 
 .genre-top-comments .col-4 {

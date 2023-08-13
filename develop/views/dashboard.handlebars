@@ -1,60 +1,27 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col d-flex justify-content-end">
+    <div class="col d-flex justify-content-between">
+      <h1>
+      My Posts
+    </h1>
       <button id="new-post-btn" type="button" class="btn btn-primary">New Post</button>
     </div>
   </div>
   <div class="row">
-    <h1>
-      My Posts
-    </h1>
     <div class="col">
       {{#each user.posts as |post|}}
-      <div id="{{post.id}}" class="large-card">
+      <div id="{{post.id}}" class="large-card my-4 p-5 mh-auto bg-primary text-white rounded">
         <div class="row">
-          <div class="col blog-title">
-            <h3>{{post.title}}</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-8">
-            <div class="row">
-              <div class="col-5 blog-date">
-                <p>
-                  {{format_date post.createdAt}}
-                </p>
-              </div>
-              <div class="col-2 blog-divider">
-                <p>
-                  |
-                </p>
-              </div>
-              <div class="col-5 blog-author">
-                <p>
-                  {{post.author}}
-                </p>
-              </div>  
-            </div>
-          </div>
-          <div class="col-2"></div>
-        </div>
-        <div class="row">
-          <div class="col"></div>
-          <div class="col-8 blog-text">
-            <p>
+          <div class="col d-flex justify-content-between">
+            <h4 class="blog-title align-self-center left">{{post.title}}</h4>
+            <p class="blog-sentence flex-grow-1 align-self-center center">
               {{post.content}}
             </p>
+            <div class="btn-group-vertical">
+              <button id="update-btn" type="button" class="btn btn-warning">Update</button>
+              <button id="delete-btn" type="button" class="btn btn-danger">Delete</button>
+            </div>
           </div>
-          <div class="col"></div>
-        </div>
-        <div class=" row d-flex justify-content-around">
-          <div class="col"></div>
-          <div class="col-6 d-flex justify-content-around"> 
-            <button id="update-btn" type="button" class="btn btn-warning">Update</button>
-            <button id="delete-btn" type="button" class="btn btn-danger">Delete</button>
-          </div>
-          <div class="col"></div>
         </div>
       </div>
       {{/each}}
