@@ -10,18 +10,18 @@ function update(event) {
   const title = formTitle.value.trim();
   const content = formContent.value.trim();
   const category = formCategory.value.trim();
-  
+
   fetch(`/api/data/update/${postId}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title, content, category}),
+    body: JSON.stringify({ title, content, category }),
   })
-  .then(res => {
-    if (res.ok) {
-      const origin = document.location.origin;
-      document.location.href = `${origin}/dashboard`;
-    }
-  });
+    .then((res) => {
+      if (res.ok) {
+        const { origin } = document.location;
+        document.location.href = `${origin}/dashboard`;
+      }
+    });
 }
 
 updateBtn.addEventListener('click', update);

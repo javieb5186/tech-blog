@@ -3,6 +3,7 @@ const formContent = document.querySelector('#content');
 const submit = document.querySelector('#submit');
 const categories = document.querySelector('#categories');
 
+// Get form data and submit post
 function submitPost(event) {
   event.preventDefault();
 
@@ -15,10 +16,10 @@ function submitPost(event) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ title, content, category }),
   })
-  .then(() => {
-    const origin = document.location.origin;
-    document.location.href = `${origin}/dashboard`;
-  });
+    .then(() => {
+      const { origin } = document.location;
+      document.location.href = `${origin}/dashboard`;
+    });
 }
 
 submit.addEventListener('click', submitPost);

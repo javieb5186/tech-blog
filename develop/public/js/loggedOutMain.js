@@ -16,14 +16,14 @@ function toggleLoginSignup(event) {
     canvasTitle.innerText = 'Sign Up';
     signUpForm.setAttribute('class', 'show');
     loginForm.setAttribute('class', 'hide');
-  } 
-  else if (form === 'signup-form') {
+  } else if (form === 'signup-form') {
     canvasTitle.innerText = 'Log in';
     loginForm.setAttribute('class', 'show');
     signUpForm.setAttribute('class', 'hide');
   }
 }
 
+// Get form data, submit data, and redirect
 function logIn(event) {
   event.preventDefault();
 
@@ -38,15 +38,15 @@ function logIn(event) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
     })
-    .then(res => {
-      if (res.ok) {
-        const origin = document.location.origin;
-        document.location.href = `${origin}/`;
-      }
-    })
-    .catch(err => console.log(err));
+      .then((res) => {
+        if (res.ok) {
+          const { origin } = document.location;
+          document.location.href = `${origin}/`;
+        }
+      })
+      .catch((err) => console.log(err));
   } else {
-    console.log('Detected inccorectly');
+    console.log('Detected incorectly');
   }
 }
 
@@ -57,7 +57,7 @@ function signUp(event) {
   console.log(formData);
 
   if (formData[0].id === 'username' && formData[1].id === 'pwd' && formData[2].id === 'c-pwd') {
-    if (formData[1].value.trim() == formData[2].value.trim()) {
+    if (formData[1].value.trim() === formData[2].value.trim()) {
       const username = String(formData[0].value.trim());
       const password = String(formData[1].value.trim());
 
@@ -66,13 +66,13 @@ function signUp(event) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       })
-      .then(res => {
-        if (res.ok) {
-          const origin = document.location.origin;
-          document.location.href = `${origin}/`;
-        }
-      })
-      .catch(err => console.log(err));
+        .then((res) => {
+          if (res.ok) {
+            const { origin } = document.location;
+            document.location.href = `${origin}/`;
+          }
+        })
+        .catch((err) => console.log(err));
     }
   }
 }
@@ -80,4 +80,4 @@ function signUp(event) {
 loginForm.addEventListener('submit', logIn);
 signUpForm.addEventListener('submit', signUp);
 loginLink.addEventListener('click', toggleLoginSignup);
-signupLink.addEventListener('click',toggleLoginSignup);
+signupLink.addEventListener('click', toggleLoginSignup);

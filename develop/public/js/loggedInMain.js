@@ -5,25 +5,25 @@ function logout(event) {
   event.preventDefault();
 
   fetch('/logout')
-  .then(res => {
-    if (res.ok) {
-      const origin = document.location.origin;
-      document.location.href = `${origin}/`;
-    }
-  })
+    .then((res) => {
+      if (res.ok) {
+        const { origin } = document.location;
+        document.location.href = `${origin}/`;
+      }
+    });
 }
 
 function toDashboard(event) {
   event.preventDefault();
 
   fetch('/dashboard')
-  .then(res => {
-    if (res.ok) {
-      const origin = document.location.origin;
-      document.location.href = `${origin}/dashboard`;
-    }
-  })
-  .catch(err => console.log(err));
+    .then((res) => {
+      if (res.ok) {
+        const { origin } = document.location;
+        document.location.href = `${origin}/dashboard`;
+      }
+    })
+    .catch((err) => console.log(err));
 }
 
 logoutLink.addEventListener('click', logout);

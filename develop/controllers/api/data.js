@@ -1,38 +1,37 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../../models');
+const auth = require('../../utils/auth');
 require('dotenv').config();
 
+// Get all posts
 router.get('/', async (req, res) => {
   try {
     const allPosts = await Post.findAll();
-    const posts = allPosts.map(post => post.get({ plain: true }));
+    const posts = allPosts.map((post) => post.get({ plain: true }));
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json({ message: err });
   }
 });
 
-router.post('/post', async (req, res) => {
+// Create post
+router.post('/post', auth, async (req, res) => {
   try {
-    if (req.session.loggedIn) {
-      await Post.create({
-        title: req.body.title,
-        content: req.body.content,
-        category: req.body.category,
-        author: req.session.username,
-        user_id: req.session.user_id,
-      });
-      res.redirect('/dashboard');
-    } else {
-      res.redirect('/');
-    }
-    
+    await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      category: req.body.category,
+      author: req.session.username,
+      user_id: req.session.user_id,
+    });
+    res.redirect('/dashboard');
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.post('/comment', async (req, res) => {
+// Create comment
+router.post('/comment', auth, async (req, res) => {
   try {
     await Comment.create({
       content: req.body.content,
@@ -45,35 +44,36 @@ router.post('/comment', async (req, res) => {
   }
 });
 
-router.post('/update/:id', async (req, res) => {
+// Update a post by id
+router.post('/update/:id', auth, async (req, res) => {
   try {
-    console.log("Update Called");
-    const post = await Post.update({
-      title: req.body.title,
-      content: req.body.content,
-      category: req.body.category,
-    }, 
-    {
-      where: {
-        id: req.params.id,
+    const post = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+        category: req.body.category,
       },
-    });
-    console.log("Post is: ");
-    console.log(post);
+      {
+        where: {
+          id: req.params.id,
+        },
+      },
+    );
     res.status(200).json(post);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.delete('/delete/:id', async (req, res) => {
+// Delete a post by id
+router.delete('/delete/:id', auth, async (req, res) => {
   try {
     await Post.destroy({
       where: {
         id: req.params.id,
       },
     });
-    res.status(200);
+    res.status(200).json({ message: 'Post delete' });
   } catch (err) {
     res.status(500).json(err);
   }

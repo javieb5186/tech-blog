@@ -8,10 +8,10 @@ const seedDatabase = async () => {
   await Post.sync({ force: true });
   await Comment.sync({ force: true });
 
-  for (let i = 0; i < userData.length; i++) {
+  // In order to create things in order, calling a create on each user is necessary
+  for (let i = 0; i < userData.length; i += 1) {
     await User.create(userData[i]);
   }
-  
   await Post.bulkCreate(postData);
 
   process.exit(0);
