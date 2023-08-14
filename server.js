@@ -5,7 +5,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./develop/controllers');
 const helpers = require('./develop/utils/helpers');
-const { User, Post, Comment } = require('./develop/models');
 
 const sequelize = require('./develop/config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -38,13 +37,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/develop/public')));
 
 app.use(routes);
-
-// (async function run() {
-//   await User.sync({ force: false });
-//   await Post.sync({ force: false });
-//   await Comment.sync({ force: false });
-//   app.listen(PORT, () => console.log('Now listening'));
-// })();
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));

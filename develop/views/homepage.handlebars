@@ -1,145 +1,21 @@
 <div class="container">
+  <h3 class="center">
+    Latest Posts
+  </h3>
+  <div class="cards">
   {{#each posts as |post|}}
-  <div id="{{post.id}}" class="large-card mt-4 p-3 bg-primary text-white rounded">
-    <div class="row">
-      <div class="col blog-title">
-        <h3>{{post.title}}</h1>
+    <div id="{{post.id}}" class="large-card mt-4 p-3 bg-primary text-white rounded w-40 m-3">
+      <div class="d-flex justify-content-between">
+        <span class="blog-title post-title">{{post.title}}</span>
+        <span class="blog-date align-self-center">Created by {{post.author}} on {{format_date post.createdAt}}</span> 
       </div>
-    </div>
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
-        <div class="row">
-          <div class="col-5 blog-date">
-            <p>
-              {{format_date post.createdAt}}
-            </p>
-          </div>
-          <div class="col-2 blog-divider">
-            <p>
-              |
-            </p>
-          </div>
-          <div class="col-5 blog-author">
-            <p>
-              {{post.author}}
-            </p>
-          </div>  
-        </div>
-      </div>
-      <div class="col-2"></div>
-    </div>
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-8 blog-text">
+      <div class="blog-text">
         <p>
           {{post.content}}
         </p>
       </div>
-      <div class="col"></div>
     </div>
-  </div>
-  {{/each}}
-</div>
-
-<div class="container-fluid">
-  <div class="d-flex flex-wrap justify-content-around">
-    <div class="small-card">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div class="d-flex justify-content-around">
-            <img src="https://i0.wp.com/sunrisedaycamp.org/wp-content/uploads/2020/10/placeholder.png?ssl=1" class="mx-auto" alt="Place holder">
-          </div>
-          <div class="row">
-            <div class="col"></div>
-            <div class="col-4 blog-divider">
-              <p>
-                Genre
-              </p>
-            </div>
-            <div class="col"></div>  
-          </div>
-        </div>
-        <div class="col-2"></div>
-      </div>
-      <div class="row">
-        <div class="col blog-title">
-          <h3>Blog Title</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col"></div>
-        <div class="col-8 blog-sentence">
-          <p>
-            Lorem ipsum dolor sit amet.
-          </p>
-        </div>
-        <div class="col"></div>
-      </div>
-    </div>
+    {{/each}}
   </div>
 </div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col center">
-      <h3>
-        Most Commented
-      </h3>
-      <hr>
-    </div>
-  </div>
-  <div class="row genre-top-comments">
-    <div class="col-sm-2 col-4">
-      <p>
-        Genre
-      </p>
-      <h4>
-        Title
-      </h4>
-    </div>
-    <div class="col-sm-2 col-4">
-      <p>
-        Genre
-      </p>
-      <h4>
-        Title
-      </h4>
-    </div>
-    <div class="col-sm-2 col-4">
-      <p>
-        Genre
-      </p>
-      <h4>
-        Title
-      </h4>
-    </div>
-    <div class="col-sm-2 col-4">
-      <p>
-        Genre
-      </p>
-      <h4>
-        Title
-      </h4>
-    </div>
-    <div class="col-sm-2 col-4">
-      <p>
-        Genre
-      </p>
-      <h4>
-        Title
-      </h4>
-    </div>
-    <div class="col-sm-2 col-4">
-      <p>
-        Genre
-      </p>
-      <h4>
-        Title
-      </h4>
-    </div>
-  </div>
-</div>
-
 <script src="/js/homepage.js"></script>

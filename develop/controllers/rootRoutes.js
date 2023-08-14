@@ -11,6 +11,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/category/:category', async (req, res) => {
+  try {
+    const allPosts = await Post.findAll({
+      where: { category: req.params.category },
+    });
+    const posts = allPosts.map(post => post.get({ plain: true }));
+    res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+});
+
 router.post('/login', async (req, res) => {
   try {
     if (req.session.loggedIn) {
@@ -82,12 +94,14 @@ router.post('/signup', async (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
   try {
+    console.log('Called');
     if (req.session.loggedIn) {
       const userData = await User.findByPk( req.session.user_id, {
         include: [{ model: Post }],
         attributes: ['username'],
       });
       const user = userData.get({ plain: true });
+      console.log("User is ");
       console.log(user);
       res.render('dashboard', { user, loggedIn: req.session.loggedIn });
     } else if (!req.session.loggedIn) {
@@ -123,6 +137,18 @@ router.get('/post/:id', async (req, res) => {
     }
   } catch (err) {
     
+  }
+});
+
+router.get('/updatepost/:id', async (req, res) => {
+  try {
+    if (req.session.loggedIn) {
+      res.render('updatePost', {postId: req.params.id, loggedIn: req.session.loggedIn});
+    } else if (!req.session.loggedIn) {
+      res.redirect('/'); 
+    }
+  } catch (err) {
+    res.status(500).json({ message: err });
   }
 });
 
