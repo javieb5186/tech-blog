@@ -3,11 +3,10 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const routes = require('./develop/controllers');
 const helpers = require('./develop/utils/helpers');
-
 const sequelize = require('./develop/config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,8 +21,8 @@ const sess = {
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
-  })
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
@@ -41,5 +40,3 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
-
-

@@ -18,7 +18,6 @@ Post.belongsTo(User, {
 
 Comment.belongsTo(Post, {
   foreignKey: 'post_id',
-  foreignKeyConstraint: false
 });
 
 module.exports = { User, Post, Comment };
