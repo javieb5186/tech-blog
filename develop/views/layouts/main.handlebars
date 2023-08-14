@@ -17,6 +17,24 @@
   <title>Traveler's Tech</title>
 </head>
 <body>
+  {{#if notLoggedIn}}
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Modal body..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
   <div class="container-fluid">
     <div class="row">
       <div class="col-3 justify-content-around my-auto mobile">
@@ -122,22 +140,22 @@
       <div class="col-12 my-auto">
         <ul class="nav justify-content-around">
           <li class="nav-item">
-            <a class="nav-link" href="#">Python</a>
+            <a class="nav-link" href="/category/Python">Python</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">C</a>
+            <a class="nav-link" href="/category/C">C</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">C++</a>
+            <a class="nav-link" href="/category/C++">C++</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Java</a>
+            <a class="nav-link" href="/category/Java">Java</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">C#</a>
+            <a class="nav-link" href="/category/C#">C#</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">JavaScript</a>
+            <a class="nav-link" href="/category/JavaScript">JavaScript</a>
           </li>
         </ul>
       </div>
@@ -146,7 +164,7 @@
 
   {{{body}}}
 
-  <div class="container-fluid tertiary-bg children-primary">
+  <div class="container-fluid tertiary-bg children-primary mt-6">
     <div class="row">
       <div class="col"></div>
       <div class="col-8 center-children">

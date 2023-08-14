@@ -1,7 +1,6 @@
 const newPostBtn = document.querySelector('#new-post-btn');
-const updatePostBtn = document.querySelector('#update-btn');
-const deletePostBtn = document.querySelector('#delete-btn');
-const postId = document.querySelector('.large-card').id;
+const updatePostBtns = document.querySelectorAll('.update-btn');
+const deletePostBtns = document.querySelectorAll('.delete-btn');
 
 function goToNewPost(event) {
   event.preventDefault();
@@ -17,6 +16,17 @@ function goToNewPost(event) {
 }
 
 function goToUpdatePost() {
+  let parentFound = false; 
+  let el = this.parentElement;
+  let count = 0;
+  do {
+    if (!el.id) {
+      el = el.parentElement;
+    } else if (el.id) {
+      parentFound = true;
+    }
+  } while (!parentFound || count > 10);
+  const postId = el.id;
   const origin = document.location.origin;
   document.location.href = `${origin}/updatepost/${postId}`;
 }
@@ -27,7 +37,6 @@ function deletePost(event) {
     method: 'DELETE'
   })
   .then(res => {
-    console.log(res);
     if (res.ok) {
       const origin = document.location.origin;
       document.location.href = `${origin}/dashboard`;
@@ -36,5 +45,5 @@ function deletePost(event) {
 }
 
 newPostBtn.addEventListener('click', goToNewPost);
-updatePostBtn.addEventListener('click', goToUpdatePost);
-deletePostBtn.addEventListener('click', deletePost);
+updatePostBtns.forEach(el => el.addEventListener('click', goToUpdatePost))
+deletePostBtns.forEach(el => el.addEventListener('click', deletePost));

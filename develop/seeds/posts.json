@@ -1,1 +1,128 @@
-[]
+[
+  {
+    "title": "Why is it called 'Python'?",
+    "content": "While many people assume the name Python Programming comes from something related to the Python snake,it actually comes from the TV comedy series 'Monty Python's Flying Circus.'",
+    "category": "Python",
+    "author": "jultol",
+    "user_id": 2
+  },
+  {
+    "title": "Python has overtaken French in primary schools",
+    "content": "Believe it or not, Python surpassed French as the most popular primary school language in 2015. 60% parents would prefer their children to learn Python than French.",
+    "category": "Python",
+    "author": "dylber",
+    "user_id": 3
+  },
+  {
+    "title": "Python does not require a compiler",
+    "content": "Python is a high-level, interpreted language that does not require a compiler. Python code is stored in a .pyc file, which serves as the Python engine and eliminates the need for a compiler.",
+    "category": "Python",
+    "author": "seamcl",
+    "user_id": 4
+  },
+  {
+    "title": "C Language was not called C at the beginning.",
+    "content": "It has been named as C after passing many stages of evolution.",
+    "category": "C",
+    "author": "faimar",
+    "user_id": 5
+  },
+  {
+    "title": "Why it is named as C?",
+    "content": "There is no such logic behind the naming of C Language. It was developed to cover all the inabilities of B language (simplified version of BCPL). So, it was just named C as it is next to B in the English alphabets.",
+    "category": "C",
+    "author": "jonor",
+    "user_id": 6
+  },
+  {
+    "title": "C was considered as the high level language",
+    "content": "But today many programmers consider it as a low level language as it supports only scalar operations.",
+    "category": "C",
+    "author": "jultol",
+    "user_id": 2
+  },
+  {
+    "title": "C++ introduces Object-Oriented Programming",
+    "content": "C++ supports the four primary features of OOP: encapsulation, polymorphism, abstraction, and inheritance.",
+    "category": "C++",
+    "author": "dylber",
+    "user_id": 3
+  },
+  {
+    "title": "C++ is a general-purpose, object-oriented programming language.",
+    "content": "It supports generic programming and low-level memory manipulation.",
+    "category": "C++",
+    "author": "seamcl",
+    "user_id": 4
+  },
+  {
+    "title": "C++ not purely object-oriented",
+    "content": "We can write C++ code without using classes and it will compile without showing any error message.",
+    "category": "C++",
+    "author": "faimar",
+    "user_id": 5
+  },
+  {
+    "title": "Java was called Oak at the beginning",
+    "content": "It was eventually changed to Java by Sun's marketing department when Sun lawyers found that there was already a computer company registered as Oak.",
+    "category": "Java",
+    "author": "johnor",
+    "user_id": 6
+  },
+  {
+    "title": "Java was just an accident!",
+    "content": "Gosling and his team was building a set-top box and started by 'cleaning up' C++ and wound up with a new language and runtime.",
+    "category": "Java",
+    "author": "jultol",
+    "user_id": 2
+  },
+  {
+    "title": "Most popular user interface",
+    "content": "Currently, about 3 billion mobile phones are working in Java, as well as 125 million TV sets and each Blu-Ray player.",
+    "category": "Java",
+    "author": "dylber",
+    "user_id": 3
+  },
+  {
+    "title": "C Sharp name is stimulated by the musical notation.",
+    "content": "Here sharp, represent the written note which should be made a semitone higher in pitch.",
+    "category": "C#",
+    "author": "seamcl",
+    "user_id": 4
+  },
+  {
+    "title": "C# language is good for developing games.",
+    "content": "It is also used by Unity(the majority leader in commercial game engines) to develop games.",
+    "category": "C#",
+    "author": "faimar",
+    "user_id": 5
+  },
+  {
+    "title": "C# is an oop language that is based on C++ and Java.",
+    "content": "It combines the power and flexibility of C++ with the simplicity and ease of use of Java.",
+    "category": "C#",
+    "author": "johnor",
+    "user_id": 6
+  },
+  {
+    "title": "JavaScript is single threaded.",
+    "content": "Lots of people who use multi-threaded programming thinks its working is slow as it would not be able to make use of all the cores of the CPU properly.",
+    "category": "JavaScript",
+    "author": "jultol",
+    "user_id": 2
+  },
+  {
+    "title": "JavaScript supports regular expressions",
+    "content": "A concise and powerful syntax for text manipulation that is more sophisticated than the built-in string functions.",
+    "category": "JavaScript",
+    "author": "dylber",
+    "user_id": 3
+  },
+  {
+    "title": "'JavaScript hijacking'",
+    "content": "A known attack in which a tag on an attacker’s site damages a page on the victim’s site that returns private information such as JavaScript or JSON",
+    "category": "JavaScript",
+    "author": "seamcl",
+    "user_id": 4
+  }
+]

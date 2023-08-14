@@ -13,13 +13,10 @@
       <div id="{{post.id}}" class="large-card my-4 p-5 mh-auto bg-primary text-white rounded">
         <div class="row">
           <div class="col d-flex justify-content-between">
-            <h4 class="blog-title align-self-center left">{{post.title}}</h4>
-            <p class="blog-sentence flex-grow-1 align-self-center center">
-              {{post.content}}
-            </p>
+            <h4 class="align-self-center center">{{post.title}}</h4>
             <div class="btn-group-vertical">
-              <button id="update-btn" type="button" class="btn btn-warning">Update</button>
-              <button id="delete-btn" type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-warning update-btn">Update</button>
+              <button type="button" class="btn btn-danger delete-btn">Delete</button>
             </div>
           </div>
         </div>
