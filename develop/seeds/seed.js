@@ -4,9 +4,9 @@ const userData = require('./users.json');
 const postData = require('./posts.json');
 
 const seedDatabase = async () => {
-  await User.sync({ force: true });
-  await Post.sync({ force: true });
-  await Comment.sync({ force: true });
+  await User.sync({ alter: true });
+  await Post.sync({ alter: true });
+  await Comment.sync({ alter: true });
 
   // In order to create things in order, calling a create on each user is necessary
   for (let i = 0; i < userData.length; i += 1) {
