@@ -1,7 +1,17 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 const auth = require('../../utils/auth');
+const seedDatabase = require('../../seeds/seed');
 require('dotenv').config();
+
+router.get('/seed-database', async (req, res) => {
+  try {
+    seedDatabase();
+    res.status(200).json({ message: 'Database seeded' });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Get all posts
 router.get('/', async (req, res) => {

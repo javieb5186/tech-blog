@@ -7,7 +7,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const routes = require('./develop/controllers');
 const helpers = require('./develop/utils/helpers');
 const sequelize = require('./develop/config/connection');
-const seedDatabase = require('./develop/seeds/seed');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -38,12 +37,6 @@ app.use(express.static(path.join(__dirname, '/develop/public')));
 
 app.use(routes);
 
-try {
-  seedDatabase();
-} catch (err) {
-  console.log(err);
-}
-
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
