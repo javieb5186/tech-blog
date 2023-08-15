@@ -13,8 +13,6 @@ const seedDatabase = async () => {
     await User.create(userData[i]);
   }
   await Post.bulkCreate(postData);
-
-  process.exit(0);
 };
 
-seedDatabase();
+module.exports = seedDatabase;
