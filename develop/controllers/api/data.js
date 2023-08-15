@@ -6,7 +6,7 @@ require('dotenv').config();
 
 router.get('/seed-database', async (req, res) => {
   try {
-    seedDatabase();
+    await seedDatabase();
     res.redirect('/');
   } catch (err) {
     res.status(500).json(err);
